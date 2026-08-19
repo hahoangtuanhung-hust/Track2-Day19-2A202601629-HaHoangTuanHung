@@ -29,9 +29,10 @@ import httpx
 # này khởi động uvicorn ở background subprocess và đợi `/healthz` trả ready.
 
 # %%
+import sys
 ROOT = Path(_setup.__file__).resolve().parent.parent
 proc = subprocess.Popen(
-    ["uvicorn", "app.main:app", "--port", "8000", "--log-level", "warning"],
+    [sys.executable, "-m", "uvicorn", "app.main:app", "--port", "8000", "--log-level", "warning"],
     cwd=str(ROOT),
 )
 
